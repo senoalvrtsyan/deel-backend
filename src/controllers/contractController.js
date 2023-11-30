@@ -8,9 +8,9 @@ module.exports = {
   },
 
   async getContractById(req, res /*, next*/) {
-    const { id } = req.params;
-    const profile = { ...req.profile };
-    const contract = await contractService.getContract(profile, id);
+    const { id: contractId } = req.params;
+    const profileCpy = { ...req.profile };
+    const contract = await contractService.getContract(profileCpy, contractId);
     if (!contract) {
       return res.status(HTTP_STATUS_CODES.NOT_FOUND).json();
     }

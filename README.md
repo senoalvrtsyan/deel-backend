@@ -1,5 +1,11 @@
 # DEEL BACKEND TASK
 
+
+## What could be done else
+1. Logging using winston or other logger
+2. Better error handling and logging for production monitoring
+
+
 💫 Welcome! 🎉
 
 This backend exercise involves building a Node.js/Express.js app that will serve a REST API. We imagine you should spend around 3 hours at implement this feature.

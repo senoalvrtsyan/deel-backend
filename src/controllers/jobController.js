@@ -8,10 +8,10 @@ module.exports = {
   },
 
   async payJob(req, res /*, next*/) {
-    const { id } = req.params;
-    const profile = { ...req.profile };
+    const { id: contractId } = req.params;
+    const profileCpy = { ...req.profile };
     try {
-      await jobService.payJob(profile, id);
+      await jobService.payJob(profileCpy, contractId);
     } catch(err) {
       return res.status(HTTP_STATUS_CODES.BAD_REQUEST).json(err);
     }

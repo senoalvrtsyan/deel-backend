@@ -25,13 +25,13 @@ module.exports = {
         as: 'Contract',
         required: true,
         attributes: [],
-        include: [{model: dbModels.models.Profile, as: 'Contractor', required: true, attributes: []}]
+        include: [{ model: dbModels.models.Profile, as: 'Contractor', required: true, attributes: [] }]
       }],
       attributes: [
-        [dbConnection.col('Contract.Contractor.profession'),'profession'],
+        [dbConnection.col('Contract.Contractor.profession'), 'profession'],
         [dbConnection.fn('sum', dbConnection.col('price')), 'earnings']
       ],
-      group: ['Contract.Contractor.profession'],
+      group: [ 'Contract.Contractor.profession' ],
       order: dbConnection.literal('earnings DESC'),
       limit: 1
     });
