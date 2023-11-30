@@ -1,9 +1,16 @@
-const { Profile, Contract, Job } = require('../src/model');
+const { dbModels, db} = require('../src/db');
+const config = require("../src/config");
 
 /* WARNING THIS WILL DROP THE CURRENT DATABASE */
 seed();
 
 async function seed() {
+  db.connect(config.db);
+  await db.getConnection();
+  await dbModels.init();
+  
+  const { Profile, Contract, Job } = dbModels.models;
+
   // create tables
   await Profile.sync({ force: true });
   await Contract.sync({ force: true });
@@ -77,7 +84,7 @@ async function seed() {
     Contract.create({
       id:1,
       terms: 'bla bla bla',
-     status: 'terminated',
+      status: 'terminated',
       ClientId: 1,
       ContractorId:5
     }),
